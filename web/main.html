@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>NO TIME</title>
+    <script src="eel.js"></script>
+    <link rel='icon' type = 'image/png' href='/favicon.png'>
+    <link rel="stylesheet" href="/Style.css"/>
+    <link rel="stylesheet" href="/reset.css"/>
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body> 
+
+<header class = "header">
+    <div class="container">
+        <div class="header_inner">
+            <div class="header_logo">no time to procrastinate</div>
+        </div>    
+    </div>
+</header>
+ 
+<form>  
+    <div class="intro" id="intro">
+       <div class="input0" id="input0">
+            <input class="work" id="work0" type="text" placeholder="Enter what you plan to do">
+            <p class="time_position">
+                <label for="time0">Set the time: </label>
+                <input type="time" id="time0" class="time" name="time"/>  
+            </p>
+    </div>
+</form>
+
+<div class="add" onclick="addInput()">
+    <p class="add2">+</p>
+</div>
+
+<div class="del" onclick="delInput()">
+    <p class="del2">-</p>
+</div>
+
+<button class="button" onclick="push()" id="button">OK</button>
+
+<script type="text/javascript">
+
+    var x = 0;
+    var y = 0;
+
+    function addInput() {
+      var input0 = document.getElementById('input0');
+      var div = document.createElement('div');
+      div.id = 'input' + ++x;
+      div.innerHTML = '<input class="work" id="work'+ (y + 1) +'" type="text" placeholder="Enter what you plan to do"> <p class="time_position"> <label for="time">Set the time: </label> <input type="time" id="time'+ (y + 1) +'" class="time" name="time"/></p>';
+      input0.appendChild(div);
+      ++y;
+    }
+
+    function delInput() {
+      if (x > 0) {
+          var div = document.getElementById('input' + x);
+          div.remove();
+          --x;
+          --y;
+        }  
+    }
+
+    async function push() {
+        var c = 0;
+        while (c <= y) {
+            let message = document.getElementById('work'+ c).value;
+            let time = document.getElementById('time'+ c).value;
+            let call_time = await eel.thread1(message, time)();
+            ++c;
+        }
+    }    
+        
+</script>  
+
+</body>
+</html>
