@@ -1,1 +1,1 @@
-A small application for Windows that allows you to create a daily routine (Alpha version)
+Небольшое приложение для Windows позволяющее создавать заметки с оповещением (Alpha version)
