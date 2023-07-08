@@ -1,1 +1,1 @@
-Небольшое приложение для Windows позволяющее создавать заметки с оповещением (Alpha version)
+A small application for Windows allows you to create notes with an alert
